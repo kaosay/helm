@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-reusale
+spec:
+  capacity:
+    storage: 10Gi                       # PV 的存储容量
+  accessModes:
+    #- ReadWriteMany                     # 访问模式
+    - ReadWriteOnce                     # 访问模式
+  persistentVolumeReclaimPolicy: Retain # 回收策略
+  #storageClassName: manual              # 存储类名称
+  hostPath:                             # 存储类型
+    path: /mnt/k8s/pv-reusable                  # 物理路径（在每个节点上存在）
+    type: DirectoryOrCreate
+
